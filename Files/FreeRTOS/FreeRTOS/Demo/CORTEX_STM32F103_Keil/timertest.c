@@ -63,8 +63,6 @@ void vSetupTimerTest( void );
 /* Interrupt handler in which the jitter is measured. */
 void vTimer2IntHandler( void );
 
-/* Stores the value of the maximum recorded jitter between interrupts. */
-volatile unsigned short usMaxJitter = 0;
 
 /*-----------------------------------------------------------*/
 
@@ -135,7 +133,7 @@ unsigned short usThisCount, usDifference;
 		if( usDifference > usMaxDifference )
 		{
 			usMaxDifference = usDifference;
-			usMaxJitter = usMaxDifference - timerEXPECTED_DIFFERENCE_VALUE;
+
 		}
 	}
 	else
