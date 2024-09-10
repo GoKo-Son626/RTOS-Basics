@@ -158,7 +158,30 @@ void Task2Function(void * param)
 			printf("2");
 		}
 }
+/*-----------------------------------------------------------*/
+void Task3Function(void * param)
+{
+	while (1)
+		{
+			printf("3");
+		}
+}
 
+StackType_t xTask3Stack[100];
+StaticTask_t xTask3TCB;
+
+StackType_t xIdleTask3Stack[100];
+StaticTask_t xIdleTask3TCB;
+
+/* For create static task */
+void vApplicationGetIdleTaskMemory(StaticTask_t * * ppxIdleTaskTCBBuffer, StackType_t * * ppxIdleTaskStackBuffer, uint32_t * pulIdleTaskStackSize)
+{
+	*ppxIdleTaskTCBBuffer = &xIdleTask3TCB;
+	*ppxIdleTaskStackBuffer = xIdleTask3Stack;
+	*pulIdleTaskStackSize = 100;
+}
+
+/* main Function */
 int main( void )
 {
 	TaskHandle_t xHandleTask1;
@@ -173,6 +196,9 @@ int main( void )
 
 	xTaskCreate(Task1Function, "Task1", 100, NULL, 1, &xHandleTask1);
 	xTaskCreate(Task2Function, "Task2", 100, NULL, 1, NULL);
+	xTaskCreateStatic(Task3Function, "Task3", 100, NULL, 1, xTask3Stack, &xTask3TCB);
+
+	
 	/* Start the scheduler. */
 	vTaskStartScheduler();
 

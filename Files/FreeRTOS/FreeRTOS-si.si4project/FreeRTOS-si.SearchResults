@@ -1,2 +1,2 @@
----- vchecktask Matches (1 in 1 files) ----
-main.c (FreeRTOS\Demo\CORTEX_STM32F103_Keil) line 147 : static void vCheckTask( void *pvParameters );
+---- vApplicationGetIdleTaskMemory Matches (1 in 0 files) ----
+vTaskStartScheduler in tasks.c (FreeRTOS\Source) :             vApplicationGetIdleTaskMemory( &pxIdleTaskTCBBuffer, &pxIdleTaskStackBuffer, &ulIdleTaskStackSize );
